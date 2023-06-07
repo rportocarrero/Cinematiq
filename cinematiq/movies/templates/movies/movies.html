@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <main>
+        <h2>Current Movies</h2>
+        <section id="featured-movies">
+            <!-- You can replace this part with dynamic content loaded from your database -->
+            {% for movie in movies %}
+            <article>
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.description }}</p>
+                <a href="{% url 'stream' movie.id %}">Watch Now</a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

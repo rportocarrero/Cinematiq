@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.title }}</title>
+    <!-- Include the HLS.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+    <video id="video" autoplay controls></video>
+
+    <script>
+        var video = document.getElementById('video');
+        var hls = new Hls();
+        hls.loadSource('{{ movie.hls_file_url.url }}');
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+        });
+    </script>
+</body>
+</html>
